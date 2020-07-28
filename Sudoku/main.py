@@ -23,7 +23,4 @@ print(numpy.matrix(grid))
 grid=solver.solve(grid) #solves grid
 print(numpy.matrix(grid))
 
-for i in range (1,10,1):
-    for j in range (1,10,1):
-        complete.click_cell(i,j, browser,grid)
-    #unitest
+complete.fill_grid(browser,grid)
