@@ -25,5 +25,5 @@ print(numpy.matrix(grid))
 
 for i in range (1,10,1):
     for j in range (1,10,1):
-        complete.click_cell(i,j, browser)
+        complete.click_cell(i,j, browser,grid)
     #unitest
