@@ -12,7 +12,7 @@ grid=grid.astype(int)
 
 url="https://sudoku.com/pt"
 
-browser = webdriver.Firefox(executable_path=r'C:\Users\cppin\Desktop\Python\geckodriver.exe')
+browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chromedriver.exe')
 
 
 ###Main##
@@ -20,7 +20,7 @@ browser = webdriver.Firefox(executable_path=r'C:\Users\cppin\Desktop\Python\geck
 elements=info.init(url, browser) #opens browser and prepares game
 grid=info.fill_grid(elements) #retrieves grid info
 print(numpy.matrix(grid))
+print('Solving the puzzle...')
 grid=solver.solve(grid) #solves grid
 print(numpy.matrix(grid))
-
-complete.fill_grid(browser,grid)
+complete.fill_grid(browser,grid)#fills the grid

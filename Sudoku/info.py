@@ -3,7 +3,12 @@ import numpy
 import bs4
 from bs4 import BeautifulSoup
 from selenium import webdriver
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.select import Select
+import time
 
 ###Variables###
 dim=[0,0]
@@ -27,11 +32,38 @@ svg=[
 # Output: 
 def init(url, browser):
     browser.get(url)
+    delay=10 #seconds
     print('Browser Opened')
 
-    cookies = browser.find_element_by_css_selector('#banner-accept')
+    try:
+        cookies = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#banner-accept')))
+        print ("Page is ready!")
+    except TimeoutException:
+        print ("Loading took too much time!")
+        browser.quit()
+
     cookies.click()
     print('Cookies Accepted')
+
+    try:
+        menu = WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.CLASS_NAME, "difficulty-label")))
+        print ("Page is ready!")
+    except TimeoutException:
+        print ("Loading took too much time!")
+        browser.quit()
+    
+    menu.click()
+    print("Vou tentar")
+    expert = menu.find_elements_by_tag_name("li")[3] #finds the list ("li" is the list tag)
+    expert.click()
+
+    print('Expert')
+    
+    try:
+        element = WebDriverWait(browser, delay).until( EC.presence_of_element_located((By.CSS_SELECTOR, "#game > table > tbody > tr:nth-child(2) > td:nth-child(9) > div.cell-value"))   )
+    except TimeoutException:
+        print ("Loading took too much time!")
+        browser.quit()
 
     html = browser.page_source
     soup = BeautifulSoup(html, 'lxml')
