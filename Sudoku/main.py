@@ -7,6 +7,8 @@ import info
 import complete
 ###Variables###
 
+original_grid=numpy.zeros((9,9))
+original_grid=original_grid.astype(int)
 grid=numpy.zeros((9,9))
 grid=grid.astype(int)
 
@@ -18,9 +20,15 @@ browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chrom
 ###Main##
 
 elements=info.init(url, browser) #opens browser and prepares game
-grid=info.fill_grid(elements) #retrieves grid info
-print(numpy.matrix(grid))
+original_grid=info.fill_grid(elements) #retrieves grid info
+grid=original_grid
+
+print(numpy.matrix(original_grid))
 print('Solving the puzzle...')
+
 grid=solver.solve(grid) #solves grid
+
 print(numpy.matrix(grid))
-complete.fill_grid(browser,grid)#fills the grid
+print(numpy.matrix(original_grid))
+
+complete.input_grid(browser,grid,original_grid)#fills the grid
