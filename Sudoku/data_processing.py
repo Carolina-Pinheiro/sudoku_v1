@@ -30,8 +30,6 @@ svg=[
 
 
 ###Functions###
-
-
 #----------------------------------------------
 # Function: copies the sudoku puzzle from the website to a matrix 
 # Input: elements -> array, contains div.cell-value info, each position represents a cell
