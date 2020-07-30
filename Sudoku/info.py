@@ -111,6 +111,3 @@ def fill_grid(elements):
                 
                 grid[i][j] = find_match(svg,dim,aux)
     return grid
-
-
-
