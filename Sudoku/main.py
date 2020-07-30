@@ -15,7 +15,7 @@ import repeat
 
 ###Variables###
 url="https://sudoku.com/pt"
-browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chromedriver.exe') #chromedriver.exe needs to be present and the path changed accordingly
+browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chromedriver.exe') #chromedriver.exe needs to be present and the path changed accordingly 
 new_game=True
 
 
