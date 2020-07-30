@@ -15,7 +15,7 @@ import repeat
 
 ###Variables###
 url="https://sudoku.com/pt"
-browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chromedriver.exe') #it needs to be present and the path changed accordingly
+browser = webdriver.Chrome(executable_path=r'C:\Users\cppin\Desktop\Python\chromedriver.exe') #chromedriver.exe needs to be present and the path changed accordingly
 new_game=True
 
 
@@ -40,7 +40,7 @@ complete.input_grid(browser,grid,original_grid) #fills the grid
 while new_game==True:                           #new game cycle
     print('New game?Y/N')
     answer=input()                              #waits for user's answer
-    
+
     if answer=='Y':
         repeat.repeat_game(browser)             #repeats game cycle (similiar to the one above)
     elif answer=='N':
