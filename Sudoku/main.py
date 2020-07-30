@@ -8,8 +8,8 @@ import numpy
 from selenium import webdriver
 
 import solver
-import info
-import complete
+import data_processing
+import website_interact
 import repeat
 
 
@@ -22,30 +22,30 @@ new_game=True
 ###Main##
 solver.solved_variable(False)
 
-elements=info.init(url, browser)                #opens browser and prepares game
-original_grid=info.fill_grid(elements)          #retrieves grid info
+elements=website_interact.init(url, browser)                #opens browser and prepares game
+original_grid=data_processing.fill_grid(elements)           #retrieves grid info
 
-grid=original_grid.copy()                       #saves a copy of the original grid
+grid=original_grid.copy()                                   #saves a copy of the original grid
 
-print(numpy.matrix(original_grid))              #prints the retrieved grid
-print('Solving the puzzle...')                  #in expert level, some puzzle can take several seconds to solve
+print(numpy.matrix(original_grid))                          #prints the retrieved grid
+print('Solving the puzzle...')                              #in expert level, some puzzle can take several seconds to solve
 
-grid=solver.solve(grid)                         #solves puzzle with backtracking algorithm
+grid=solver.solve(grid)                                     #solves puzzle with backtracking algorithm
 
-print(numpy.matrix(grid))                       #prints the solved grid
+print(numpy.matrix(grid))                                   #prints the solved grid
 
-complete.input_grid(browser,grid,original_grid) #fills the grid
+website_interact.input_grid(browser,grid,original_grid)     #fills the grid
 
 
-while new_game==True:                           #new game cycle
+while new_game==True:                                       #new game cycle
     print('New game?Y/N')
-    answer=input()                              #waits for user's answer
+    answer=input()                                          #waits for user's answer
 
     if answer=='Y':
-        repeat.repeat_game(browser)             #repeats game cycle (similiar to the one above)
+        repeat.repeat_game(browser)                         #repeats game cycle (similiar to the one above)
     elif answer=='N':
         print('Bye!')
-        browser.quit()                          #closes browser
-        new_game=False                          #leaves cycle
+        browser.quit()                                      #closes browser
+        new_game=False                                      #leaves cycle
     else:
-        print('Invalid answer')                 #to ask for new input
+        print('Invalid answer')                             #to ask for new input

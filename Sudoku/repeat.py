@@ -14,9 +14,9 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import sys
 
-import complete
+import website_interact
 import solver
-import info
+import data_processing
 
 #----------------------------------------------
 # Function: clicks the new game button
@@ -40,22 +40,22 @@ def new_game_button(browser):
 # Input: browser-> driver for the browser that's being used
 # Output: 
 def repeat_game(browser):
-    new_game_button(browser)                            #clicks the new game button
+    new_game_button(browser)                                    #clicks the new game button
 
-    elements=info.content(browser,10)                   
-    original_grid=info.fill_grid(elements)              #retrieves grid info
-    grid=original_grid.copy()                           #saves a copy of the original grid
+    elements=website_interact.content(browser,10)                   
+    original_grid=data_processing.fill_grid(elements)                      #retrieves grid info
+    grid=original_grid.copy()                                   #saves a copy of the original grid
 
     print(numpy.matrix(original_grid))
     print('Solving the puzzle...')
 
-    solver.solved_variable(False)                       #sets solved variable to False
-    grid=solver.solve(grid)                             #solves grid
+    solver.solved_variable(False)                               #sets solved variable to False
+    grid=solver.solve(grid)                                     #solves grid
 
     print(numpy.matrix(grid))
 
 
-    complete.input_grid(browser,grid,original_grid)     #fills the grid
+    website_interact.input_grid(browser,grid,original_grid)     #fills the grid
 
 
 

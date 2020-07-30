@@ -46,6 +46,7 @@ def solve(grid):
                         grid=solve(grid)        #recursive function
                         if solved == False:     #once the puzzle is solved we don't want to change the grid again
                             grid [i][j] =0
+                
                 return grid
     solved = True
     return grid
