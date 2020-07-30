@@ -1,7 +1,7 @@
 ####--------------------Automatic Sudoku Solver for sudoku.com--------------------###
 #Carolina Pinheiro, 
 #carolina.p.pinheiro@tecnico.ulisboa.pt 
-#Julho 2020
+#July 2020
 
 ###Modules###
 import numpy 
