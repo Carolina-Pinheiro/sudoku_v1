@@ -50,4 +50,10 @@ def solve(grid):
     solved = True
     return grid
 
-
+#----------------------------------------------
+# Function: 
+# Input: 
+# Output: 
+def solved_variable(value):
+    global solved
+    solved = value

@@ -59,6 +59,13 @@ def init(url, browser):
 
     print('Expert')
     
+    return (content(browser,delay))
+
+#----------------------------------------------
+# Function: 
+# Input: 
+# Output: 
+def content(browser,delay):
     try:
         element = WebDriverWait(browser, delay).until( EC.presence_of_element_located((By.CSS_SELECTOR, "#game > table > tbody > tr:nth-child(2) > td:nth-child(9) > div.cell-value"))   )
     except TimeoutException:
@@ -68,8 +75,6 @@ def init(url, browser):
     html = browser.page_source
     soup = BeautifulSoup(html, 'lxml')
     return( (soup.tbody).select('div.cell-value') )
-
-
 
 #----------------------------------------------
 # Function: 
