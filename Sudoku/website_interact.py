@@ -1,6 +1,6 @@
 ###Module Description###
 #----------------------------------------------
-# Function: interacts with the website
+# Function: interacts with the website 
 
 ###Modules###
 import numpy 

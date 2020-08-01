@@ -1,6 +1,6 @@
 ###Module Description###
 #----------------------------------------------
-# Function: Backtracking algorithm that solves the sudoku puzzle given 
+# Function: Backtracking algorithm that solves the sudoku puzzle given  
 
 
 ###Variables###

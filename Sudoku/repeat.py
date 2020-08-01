@@ -1,6 +1,6 @@
 ###Module Description###
 #----------------------------------------------
-# Function: handles all the things after the first puzzle was solved
+# Function: handles all the things after the first puzzle was solved 
 
 
 

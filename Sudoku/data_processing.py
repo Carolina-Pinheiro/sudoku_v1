@@ -1,6 +1,6 @@
 ###Module Description###
 #----------------------------------------------
-# Function: Processes the data 
+# Function: Processes the data  
 
 ###Modules###
 import numpy 
