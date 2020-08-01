@@ -21,7 +21,7 @@ import data_processing
 #----------------------------------------------
 # Function: clicks the new game button
 # Input: browser-> driver for the browser that's being used
-# Output: 
+# Output: ---
 def new_game_button(browser):
     delay=10
     try:
@@ -38,7 +38,7 @@ def new_game_button(browser):
 #----------------------------------------------
 # Function: repeat_game loop, repeats all the game phases
 # Input: browser-> driver for the browser that's being used
-# Output: 
+# Output: ---
 def repeat_game(browser):
     new_game_button(browser)                                    #clicks the new game button
 

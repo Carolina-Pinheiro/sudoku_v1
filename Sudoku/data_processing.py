@@ -6,13 +6,6 @@
 import numpy 
 import bs4
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-import sys
-
 
 ###Variables###
 dim=[0,0]
@@ -35,23 +28,23 @@ svg=[
 # Input: elements -> array, contains div.cell-value info, each position represents a cell
 # Output: puzzle to be solved (in matrix form)
 def fill_grid(elements):
-    grid=numpy.zeros((9,9))                                     #blank grid, filled with zeros (0=cell to be filled)
-    grid=grid.astype(int)                                       #the grid is created as a float, convert it to int
+    original_grid=numpy.zeros((9,9))                                     #blank grid, filled with zeros (0=cell to be filled)
+    original_grid=original_grid.astype(int)                              #the grid is created as a float, convert it to int
     for i in range (9):
         for j in range (9):       
-            grid=read_cell(elements,i,j,grid)
-    return grid             
+            grid=read_cell(elements,i,j,original_grid)
+    return original_grid             
 
 
 #----------------------------------------------
 # Function: reads each cell
-# Input: elements-> , i,j -> , grid
-# Output: grid
-def read_cell(elements,i,j,grid):
+# Input: elements-> array, contains div.cell-value info, each position represents a cell , i,j -> grid position, original_grid-> unsolved grid (matrix)
+# Output: original_grid -> unsolved gird (matrix)
+def read_cell(elements,i,j,original_grid):
     svg_cell=elements[i*9+j].select('svg')                      #the numbers aren't hard-coded in the html, instead each number is defined by it's svg path, so we want to analyze this information 
     svg_cell=str(svg_cell)                                      #convert it to string to be easier to analyze, there were other ways to do this without converting it to a string, but for me this was the most intuitive
     if svg_cell == '[]':                                        #if a cell is empty its svg value will be none
-        grid[i][j] = 0
+        original_grid[i][j] = 0
     else:
         height =svg_cell.find('height')                         #the height and width (present in the svg) define a number
         width = svg_cell.find('width')                          #height and width now have the positions within the string where these words start
@@ -60,8 +53,8 @@ def read_cell(elements,i,j,grid):
             dim[0]= int(svg_cell[width+len('width="')] + svg_cell[width+len('width="')+1])                #width and height are 2 digit numbers
             dim[1]= int(svg_cell[height+len('height="')] +svg_cell[height+len('height="')+1])
         
-        grid[i][j] = find_match(svg,dim,svg_cell)            #to find which number is represented
-    return grid
+        original_grid[i][j] = find_match(svg,dim,svg_cell)            #to find which number is represented
+    return original_grid
 
 
 #----------------------------------------------
